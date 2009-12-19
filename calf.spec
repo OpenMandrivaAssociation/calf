@@ -12,9 +12,9 @@ URL:            http://calf.sourceforge.net/
 License:        GPLv2
 Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
-BuildRequires:  dssi-devel liblo-devel alsa-lib-devel
-BuildRequires:  ladspa-devel jackit-devel slv2-devel 
-Requires:       raptor redland rasqal
+BuildRequires:  dssi-devel expat-devel gtk2-devel lash-devel
+BuildRequires:  ladspa-devel jackit-devel libglade2-devel lv2core-devel
+Requires:       raptor redland rasqal dssi lv2core ladspa
 
 %description
 Calf is a pack of audio plugins for the DSSI, LV2, and LADSPA interface.
