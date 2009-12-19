@@ -28,6 +28,7 @@ organ.
 #replace desktop file
 
 %build 
+autoreconf -i
 %configure 
 %make
 
@@ -64,4 +65,8 @@ rm -rf %{buildroot}
 %{_mandir}/man7/calf.7.lzma
 
 %{_datadir}/applications/%{name}.desktop
+
+%changelog
+* Sat Dec 19 2009 Frank Kober <emuse@mandriva.org> 0.0.18.5-1mdv2010.1
+- import calf
 
