@@ -61,8 +61,8 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/icons/hicolor/*
 
-%{_mandir}/man1/calfjackhost.1.lzma
-%{_mandir}/man7/calf.7.lzma
+%{_mandir}/man1/calfjackhost.1.*
+%{_mandir}/man7/calf.7.*
 
 %{_datadir}/applications/%{name}.desktop
 
