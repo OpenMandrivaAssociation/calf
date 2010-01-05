@@ -24,12 +24,12 @@ compressor. It also contains two full-blown synthesizers: monosynth and
 organ.
 
 %prep 
-%setup -q  
+%setup -q
 #replace desktop file
 
 %build 
 autoreconf -i
-%configure 
+%configure --with-ladspa-dir=%{_libdir}/ladspa --with-dssi-dir=%{_libdir}/dssi --with-lv2-dir=%{_libdir}/lv2
 %make
 
 %install
