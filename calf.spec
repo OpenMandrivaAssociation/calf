@@ -13,7 +13,7 @@ License:        GPLv2
 Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
 BuildRequires:  dssi-devel expat-devel gtk2-devel lash-devel
-BuildRequires:  ladspa-devel jackit-devel libglade2-devel lv2core-devel
+BuildRequires:  ladspa-devel jackit-devel libglade2-devel lv2core-devel readline-devel
 Requires:       raptor redland rasqal dssi lv2core ladspa
 
 %description
