@@ -1,5 +1,5 @@
 %define name    calf
-%define version 0.0.18.5
+%define version 0.0.18.6
 %define release %mkrel 1 
 
 Name:           %{name} 
@@ -25,11 +25,9 @@ organ.
 
 %prep 
 %setup -q
-#replace desktop file
 
 %build 
-autoreconf -i
-%configure --with-ladspa-dir=%{_libdir}/ladspa --with-dssi-dir=%{_libdir}/dssi --with-lv2-dir=%{_libdir}/lv2
+%configure2_5x --with-ladspa-dir=%{_libdir}/ladspa --with-dssi-dir=%{_libdir}/dssi --with-lv2-dir=%{_libdir}/lv2
 %make
 
 %install
