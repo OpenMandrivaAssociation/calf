@@ -1,32 +1,32 @@
 %define name    calf
 %define version 0.0.18.6
-%define release %mkrel 1 
+%define release %mkrel 2
 
-Name:           %{name} 
+Name:           %{name}
 Summary:        Pack of multi-standard audio plugins and host for JACK
-Version:        %{version} 
+Version:        %{version}
 Release:        %{release}
 
 Source:         http://dl.sf.net/calf/%{name}-%{version}.tar.gz
 URL:            http://calf.sourceforge.net/
 License:        GPLv2
 Group:          Sound
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot 
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  desktop-file-utils dssi-devel expat-devel gtk2-devel lash-devel
 BuildRequires:  ladspa-devel jackit-devel libglade2-devel lv2core-devel readline-devel
 Requires:       raptor redland rasqal dssi lv2core ladspa
 
 %description
 Calf is a pack of audio plugins for the DSSI, LV2, and LADSPA interface.
-Calf contains the following audio effects: vintage delay, 
+Calf contains the following audio effects: vintage delay,
 rotary speaker, reverb, multi chorus, flanger, phaser, filter,
-compressor. It also contains two full-blown synthesizers: monosynth and 
+compressor. It also contains two full-blown synthesizers: monosynth and
 organ.
 
-%prep 
+%prep
 %setup -q
 
-%build 
+%build
 %configure2_5x --with-ladspa-dir=%{_libdir}/ladspa --with-dssi-dir=%{_libdir}/dssi --with-lv2-dir=%{_libdir}/lv2
 %make
 
