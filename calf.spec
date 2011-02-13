@@ -1,6 +1,6 @@
 %define name    calf
 %define version 0.0.18.6
-%define release %mkrel 2
+%define release %mkrel 3
 
 Name:           %{name}
 Summary:        Pack of multi-standard audio plugins and host for JACK
@@ -14,7 +14,7 @@ Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  desktop-file-utils dssi-devel expat-devel gtk2-devel lash-devel
 BuildRequires:  ladspa-devel jackit-devel libglade2-devel lv2core-devel readline-devel
-Requires:       raptor redland rasqal dssi lv2core ladspa
+Requires:       redland dssi lv2core ladspa
 
 %description
 Calf is a pack of audio plugins for the DSSI, LV2, and LADSPA interface.
@@ -52,12 +52,12 @@ rm -rf %{buildroot}
 %{_datadir}/ladspa/rdf/*
 
 %dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/16x16
-%dir %{_datadir}/icons/hicolor/24x24
-%dir %{_datadir}/icons/hicolor/32x32
-%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/16x16/apps
+%dir %{_datadir}/icons/hicolor/24x24/apps
+%dir %{_datadir}/icons/hicolor/32x32/apps
+%dir %{_datadir}/icons/hicolor/48x48/apps
 %{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/icons/hicolor/*
+%_exclude %{_datadir}/icons/hicolor/icon-theme.cache
 
 %{_mandir}/man1/calfjackhost.1.*
 %{_mandir}/man7/calf.7.*
