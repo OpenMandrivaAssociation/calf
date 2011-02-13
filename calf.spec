@@ -52,12 +52,12 @@ rm -rf %{buildroot}
 %{_datadir}/ladspa/rdf/*
 
 %dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/16x16/apps
-%dir %{_datadir}/icons/hicolor/24x24/apps
-%dir %{_datadir}/icons/hicolor/32x32/apps
-%dir %{_datadir}/icons/hicolor/48x48/apps
-%{_datadir}/icons/hicolor/*/*/*
-%_exclude %{_datadir}/icons/hicolor/icon-theme.cache
+%{_datadir}/icons/hicolor/16x16/apps/calf.png
+%{_datadir}/icons/hicolor/24x24/apps/calf.png
+%{_datadir}/icons/hicolor/32x32/apps/calf.png
+%{_datadir}/icons/hicolor/48x48/apps/calf.png
+
+%ghost %{_datadir}/icons/hicolor/icon-theme.cache
 
 %{_mandir}/man1/calfjackhost.1.*
 %{_mandir}/man7/calf.7.*
