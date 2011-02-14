@@ -1,6 +1,6 @@
 %define name    calf
 %define version 0.0.18.6
-%define release %mkrel 3
+%define release %mkrel 4
 
 Name:           %{name}
 Summary:        Pack of multi-standard audio plugins and host for JACK
@@ -12,7 +12,7 @@ URL:            http://calf.sourceforge.net/
 License:        GPLv2
 Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:  desktop-file-utils dssi-devel expat-devel gtk2-devel lash-devel
+BuildRequires:  desktop-file-utils dssi-devel expat-devel gtk2-devel
 BuildRequires:  ladspa-devel jackit-devel libglade2-devel lv2core-devel readline-devel
 Requires:       redland dssi lv2core ladspa
 
@@ -27,7 +27,10 @@ organ.
 %setup -q
 
 %build
-%configure2_5x --with-ladspa-dir=%{_libdir}/ladspa --with-dssi-dir=%{_libdir}/dssi --with-lv2-dir=%{_libdir}/lv2
+%configure2_5x --with-ladspa-dir=%{_libdir}/ladspa \
+                --with-dssi-dir=%{_libdir}/dssi \
+                --with-lv2-dir=%{_libdir}/lv2 \
+                --without-lash
 %make
 
 %install
@@ -35,6 +38,8 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 desktop-file-install --add-category="X-MandrivaLinux-Multimedia-Sound;" \
                      --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
+
+rm -f %{buildroot}/%{_datadir}/icons/hicolor/icon-theme.cache
 
 %clean
 rm -rf %{buildroot}
@@ -51,13 +56,10 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}/*
 %{_datadir}/ladspa/rdf/*
 
-%dir %{_datadir}/icons/hicolor
 %{_datadir}/icons/hicolor/16x16/apps/calf.png
 %{_datadir}/icons/hicolor/24x24/apps/calf.png
 %{_datadir}/icons/hicolor/32x32/apps/calf.png
 %{_datadir}/icons/hicolor/48x48/apps/calf.png
-
-%ghost %{_datadir}/icons/hicolor/icon-theme.cache
 
 %{_mandir}/man1/calfjackhost.1.*
 %{_mandir}/man7/calf.7.*
