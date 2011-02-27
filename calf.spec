@@ -1,6 +1,6 @@
 %define name    calf
 %define version 0.0.18.6
-%define release %mkrel 4
+%define release %mkrel 5
 
 Name:           %{name}
 Summary:        Pack of multi-standard audio plugins and host for JACK
