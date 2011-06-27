@@ -7,12 +7,12 @@
 
 Name:           calf
 Summary:        Pack of multi-standard audio plugins and host for JACK
-Version:        0.0.18.6
+Version:        0.0.19
 
 %if %branch
 Release:        %mkrel -c %git_snapshot 1
 %else
-Release:        %mkrel 4
+Release:        %mkrel 5
 %endif
 
 %if %branch
