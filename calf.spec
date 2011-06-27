@@ -1,19 +1,32 @@
-%define name    calf
-%define version 0.0.18.6
-%define release %mkrel 5
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
 
-Name:           %{name}
+%if %branch
+%define git_snapshot git20110507
+%endif
+
+Name:           calf
 Summary:        Pack of multi-standard audio plugins and host for JACK
-Version:        %{version}
-Release:        %{release}
+Version:        0.0.18.6
 
-Source:         http://dl.sf.net/calf/%{name}-%{version}.tar.gz
-URL:            http://calf.sourceforge.net/
+%if %branch
+Release:        %mkrel -c %git_snapshot 1
+%else
+Release:        %mkrel 4
+%endif
+
+%if %branch
+Source:         http://repo.or.cz/w/%{name}.git/snapshot/457380c144f1aee7563ec0b58d1c7d5f3da1204a.tar.gz
+Patch0:         calf_git_fix_strfmt.patch
+%else
+Source:         http://dl.sf.net/%{name}/%{name}-%{version}.tar.gz
+%endif
+URL:            http://%{name}.sourceforge.net/
 License:        GPLv2
 Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:  desktop-file-utils dssi-devel expat-devel gtk2-devel
-BuildRequires:  ladspa-devel jackit-devel libglade2-devel lv2core-devel readline-devel
+BuildRequires:  desktop-file-utils dssi-devel expat-devel pango-devel
+BuildRequires:  ladspa-devel jackit-devel lv2core-devel readline-devel
 Requires:       redland dssi lv2core ladspa
 
 %description
@@ -24,19 +37,31 @@ compressor. It also contains two full-blown synthesizers: monosynth and
 organ.
 
 %prep
+%if %branch
+%setup -q -n calf
+%patch0 -p0
+%else
 %setup -q
+%endif
 
 %build
-%configure2_5x --with-ladspa-dir=%{_libdir}/ladspa \
+%if %branch
+autoreconf -i
+%endif
+%configure2_5x  --with-ladspa-dir=%{_libdir}/ladspa \
                 --with-dssi-dir=%{_libdir}/dssi \
                 --with-lv2-dir=%{_libdir}/lv2 \
-                --without-lash
+                --enable-static=false \
+                --libdir=%{_libdir} \
+                --without-lash --enable-experimental=yes
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-desktop-file-install --add-category="X-MandrivaLinux-Multimedia-Sound;" \
+desktop-file-install --add-category=";X-MandrivaLinux-Multimedia-Sound;" \
+                     --add-category="GTK;" \
+                     --remove-key="Version" \
                      --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 rm -f %{buildroot}/%{_datadir}/icons/hicolor/icon-theme.cache
@@ -52,6 +77,11 @@ rm -rf %{buildroot}
 %{_libdir}/dssi/%{name}/%{name}_gtk
 %{_libdir}/ladspa/%{name}.so
 %{_libdir}/lv2/%{name}.lv2
+
+%{_libdir}/%{name}/%{name}.so
+%{_libdir}/%{name}/%{name}.la
+%{_libdir}/%{name}/%{name}_gtk
+
 
 %{_datadir}/%{name}/*
 %{_datadir}/ladspa/rdf/*
