@@ -27,7 +27,8 @@ Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  desktop-file-utils dssi-devel expat-devel pango-devel
 BuildRequires:  ladspa-devel jackit-devel lv2core-devel readline-devel
-Requires:       redland dssi lv2core ladspa
+BuildRequires:  fluidsynth-devel
+Requires:       redland dssi lv2core ladspa fluidsynth
 
 %description
 Calf is a pack of audio plugins for the DSSI, LV2, and LADSPA interface.
