@@ -26,7 +26,7 @@ License:        GPLv2
 Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  desktop-file-utils dssi-devel expat-devel cairo-devel
-BuildRequires:  gconf2-devel gtk2-devel
+BuildRequires:  libGConf2-devel gtk2-devel
 BuildRequires:  ladspa-devel jackit-devel lv2core-devel readline-devel
 BuildRequires:  fluidsynth-devel
 Requires:       redland dssi lv2core ladspa fluidsynth
