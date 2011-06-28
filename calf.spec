@@ -46,9 +46,9 @@ organ.
 
 %build
 %if %branch
-autoreconf -i
+./autogen.sh
 %endif
-%configure2_5x  --with-ladspa-dir=%{_libdir}/ladspa \
+%configure  --with-ladspa-dir=%{_libdir}/ladspa \
                 --with-dssi-dir=%{_libdir}/dssi \
                 --with-lv2-dir=%{_libdir}/lv2 \
                 --enable-static=false \
