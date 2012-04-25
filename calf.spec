@@ -26,6 +26,7 @@ Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  desktop-file-utils expat-devel cairo-devel
 BuildRequires:  gtk2-devel
+BuildRequires:  fftw2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gconf-2.0)
 BuildRequires:  jackit-devel lv2-devel readline-devel
