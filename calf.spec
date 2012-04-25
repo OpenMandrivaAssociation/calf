@@ -2,7 +2,7 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define git_snapshot git20110507
+%define git_snapshot git20120421
 %endif
 
 Name:           calf
@@ -16,8 +16,7 @@ Release:        %mkrel 5
 %endif
 
 %if %branch
-Source:         http://repo.or.cz/w/%{name}.git/snapshot/457380c144f1aee7563ec0b58d1c7d5f3da1204a.tar.gz
-Patch0:         calf_git_fix_strfmt.patch
+Source:         http://repo.or.cz/w/%{name}.git/snapshot/%{name}-f63124a88bff1c6444639e6969854e5ed162f24d.tar.gz
 %else
 Source:         http://dl.sf.net/%{name}/%{name}-%{version}.tar.gz
 %endif
@@ -25,14 +24,16 @@ URL:            http://%{name}.sourceforge.net/
 License:        GPLv2
 Group:          Sound
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:  desktop-file-utils dssi-devel expat-devel cairo-devel
-BuildRequires:  libGConf2-devel gtk2-devel
-BuildRequires:  ladspa-devel jackit-devel lv2core-devel readline-devel
+BuildRequires:  desktop-file-utils expat-devel cairo-devel
+BuildRequires:  gtk2-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gconf-2.0)
+BuildRequires:  jackit-devel lv2-devel readline-devel
 BuildRequires:  fluidsynth-devel
-Requires:       redland dssi lv2core ladspa fluidsynth
+Requires:       redland lv2 fluidsynth
 
 %description
-Calf is a pack of audio plugins for the DSSI, LV2, and LADSPA interface.
+Calf is a pack of audio plugins for the LV2 interface.
 Calf contains the following audio effects: vintage delay,
 rotary speaker, reverb, multi chorus, flanger, phaser, filter,
 compressor. It also contains two full-blown synthesizers: monosynth and
@@ -41,7 +42,6 @@ organ.
 %prep
 %if %branch
 %setup -q -n calf
-%patch0 -p0
 %else
 %setup -q
 %endif
@@ -50,6 +50,7 @@ organ.
 %if %branch
 ./autogen.sh
 %endif
+LDFLAGS='-lgthread-2.0' \
 %configure  --with-ladspa-dir=%{_libdir}/ladspa \
                 --with-dssi-dir=%{_libdir}/dssi \
                 --with-lv2-dir=%{_libdir}/lv2 \
@@ -75,30 +76,33 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README COPYING AUTHORS
 %{_bindir}/calfjackhost
-%{_libdir}/dssi/%{name}.so
-%{_libdir}/dssi/%{name}/%{name}_gtk
-%{_libdir}/ladspa/%{name}.so
 %{_libdir}/lv2/%{name}.lv2
-
 %{_libdir}/%{name}/%{name}.so
-%{_libdir}/%{name}/%{name}.la
-%{_libdir}/%{name}/%{name}_gtk
 
 
 %{_datadir}/%{name}/*
-%{_datadir}/ladspa/rdf/*
 
 %{_datadir}/icons/hicolor/16x16/apps/calf.png
 %{_datadir}/icons/hicolor/24x24/apps/calf.png
 %{_datadir}/icons/hicolor/32x32/apps/calf.png
 %{_datadir}/icons/hicolor/48x48/apps/calf.png
+%{_datadir}/icons/hicolor/128x128/apps/calf.png
+%{_datadir}/icons/hicolor/128x128/apps/calf_plugin.png
+%{_datadir}/icons/hicolor/16x16/apps/calf_plugin.png
+%{_datadir}/icons/hicolor/22x22/apps/calf.png
+%{_datadir}/icons/hicolor/22x22/apps/calf_plugin.png
+%{_datadir}/icons/hicolor/24x24/apps/calf_plugin.png
+%{_datadir}/icons/hicolor/256x256/apps/calf.png
+%{_datadir}/icons/hicolor/256x256/apps/calf_plugin.png
+%{_datadir}/icons/hicolor/32x32/apps/calf_plugin.png
+%{_datadir}/icons/hicolor/48x48/apps/calf_plugin.png
+%{_datadir}/icons/hicolor/64x64/apps/calf.png
+%{_datadir}/icons/hicolor/64x64/apps/calf_plugin.png
+%{_datadir}/icons/hicolor/scalable/apps/calf.svg
+%{_datadir}/icons/hicolor/scalable/apps/calf_plugin.svg
 
 %{_mandir}/man1/calfjackhost.1.*
 %{_mandir}/man7/calf.7.*
 
 %{_datadir}/applications/%{name}.desktop
-
-%changelog
-* Sat Dec 19 2009 Frank Kober <emuse@mandriva.org> 0.0.18.5-1mdv2010.1
-- import calf
 
