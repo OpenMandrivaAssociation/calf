@@ -107,3 +107,58 @@ rm -rf %{buildroot}
 
 %{_datadir}/applications/%{name}.desktop
 
+
+
+%changelog
+* Wed Apr 25 2012 Frank Kober <emuse@mandriva.org> 0.0.19-0.git20120421.1mdv2012.0
++ Revision: 793444
+- new git snapshot
+  o adjust file list
+  o adapt BR names
+  o drop strfmt fix patch
+
+* Tue Jun 28 2011 Frank Kober <emuse@mandriva.org> 0.0.19-0.git20110507.1
++ Revision: 687626
+- try included autogen.sh instead of autoreconf
+- bump version to 0.0.19
+- add string format fix
+- update to latest git version from 2011-05-07
+  o keep official version tarball
+
+* Sun Feb 27 2011 Funda Wang <fwang@mandriva.org> 0.0.18.6-5
++ Revision: 640427
+- rebuild to obsolete old packages
+
+* Mon Feb 14 2011 Frank Kober <emuse@mandriva.org> 0.0.18.6-4
++ Revision: 637747
+- disable lash, fix hicolor icon cache conflict
+
+* Sun Feb 13 2011 Frank Kober <emuse@mandriva.org> 0.0.18.6-3
++ Revision: 637570
+- fix icon paths
+- rebuild for fixed redland
+
+* Wed Feb 09 2011 Frank Kober <emuse@mandriva.org> 0.0.18.6-2
++ Revision: 637055
+- rebuild for new raptor
+
+* Tue Aug 24 2010 Frank Kober <emuse@mandriva.org> 0.0.18.6-1mdv2011.0
++ Revision: 572936
+- new version 0.18.6 (bugfix)
+  o replace autoreconf by configure2_5x
+
+* Tue Jan 05 2010 Stéphane Téletchéa <steletch@mandriva.org> 0.0.18.5-1mdv2010.1
++ Revision: 486367
+- Another missing BR
+- Missing BR readline
+- Precise plugins path
+
+  + Frank Kober <emuse@mandriva.org>
+    - manpage compression format generalized
+    - Update rpm group tag
+    - Update rpm group tag
+    - import calf
+
+
+* Sat Dec 19 2009 Frank Kober <emuse@mandriva.org> 0.0.18.5-1mdv2010.0
+- import calf
