@@ -12,7 +12,7 @@ Version:        0.0.19
 %if %branch
 Release:        %mkrel -c %git_snapshot 1
 %else
-Release:        %mkrel 5
+Release:        6
 %endif
 
 %if %branch
