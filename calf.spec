@@ -1,3 +1,6 @@
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 Name:           calf
 Summary:        Pack of multi-standard audio plugins for LV2 and host for JACK
 Version:        0.90.3
