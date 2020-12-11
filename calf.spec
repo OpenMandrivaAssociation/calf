@@ -92,7 +92,7 @@ export NOCONFIGURE=1
 %ifarch x86_64 %ix86
 	          --enable-sse \
 %endif
-            --enable-ladspa
+            --enable-ladspa \
             --enable-static=false \
             --libdir=%{_libdir} \
             --enable-experimental=yes
