@@ -81,6 +81,7 @@ extensions.
 %autosetup -p1
 
 %build
+%global ldflags %{ldflags} -fuse-ld=gold
 export NOCONFIGURE=1
 ./autogen.sh
 
