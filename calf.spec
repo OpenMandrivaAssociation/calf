@@ -8,6 +8,7 @@ URL:            http://calf-studio-gear.org/
 Source0:        https://github.com/%{name}-studio-gear/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  desktop-file-utils
+BuildRequires:	pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(dssi)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(cairo)
