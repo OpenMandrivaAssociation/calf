@@ -9,6 +9,7 @@ License:        GPLv2
 Group:          Sound/Midi
 URL:            http://calf-studio-gear.org/
 Source0:        https://github.com/%{name}-studio-gear/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         calf-vector-size-crashfix.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(expat)
