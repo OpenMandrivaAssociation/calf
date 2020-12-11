@@ -82,6 +82,8 @@ extensions.
 
 %build
 %global ldflags %{ldflags} -fuse-ld=gold
+export CC=gcc
+export CXX=g++
 export NOCONFIGURE=1
 ./autogen.sh
 
