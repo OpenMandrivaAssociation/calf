@@ -1,6 +1,3 @@
-%define _disable_ld_no_undefined 1
-%define _disable_lto 1
-
 Name:           calf
 Summary:        Pack of multi-standard audio plugins for LV2 and host for JACK
 Version:        0.90.3
@@ -11,6 +8,7 @@ URL:            http://calf-studio-gear.org/
 Source0:        https://github.com/%{name}-studio-gear/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  desktop-file-utils
+BuildRequires:  pkgconfig(dssi)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -19,7 +17,9 @@ BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lv2) >= 1.12.0
 BuildRequires:  readline-devel
+BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(lash-1.0)
 Requires:       redland
 Requires:       lv2 >= 1.12.0
 Requires:       fluidsynth
@@ -81,17 +81,21 @@ extensions.
 %autosetup -p1
 
 %build
-%global ldflags %{ldflags} -fuse-ld=gold
 export CC=gcc
 export CXX=g++
 export NOCONFIGURE=1
 ./autogen.sh
 
-%configure2_5x  --with-lv2-dir=%{_libdir}/lv2 \
-                --enable-static=false \
-                --libdir=%{_libdir} \
-                --without-lash \
-                --enable-experimental=yes
+%configure  --with-lv2-dir=%{_libdir}/lv2 \
+            --with-ladspa-dir=%{_libdir}/ladspa/ \
+            --with-dssi-dir=%{_libdir}/dssi/ \
+%ifarch x86_64 %ix86
+	          --enable-sse \
+%endif
+            --enable-ladspa
+            --enable-static=false \
+            --libdir=%{_libdir} \
+            --enable-experimental=yes
 %make_build
 
 %install
