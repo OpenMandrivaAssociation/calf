@@ -82,6 +82,7 @@ extensions.
 %autosetup -p1
 
 %build
+# Need to use GCC, because compilation failing with Clang. Bug in upstream: https://github.com/calf-studio-gear/calf/issues/156
 export CC=gcc
 export CXX=g++
 export NOCONFIGURE=1
