@@ -4,7 +4,7 @@ Version:        0.90.3
 Release:        5
 License:        GPLv2
 Group:          Sound/Midi
-URL:            http://calf-studio-gear.org/
+URL:            https://calf-studio-gear.org/
 Source0:        https://github.com/%{name}-studio-gear/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  desktop-file-utils
