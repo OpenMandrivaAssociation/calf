@@ -119,7 +119,8 @@ find %{buildroot} -name '*.la' -delete
 %doc README AUTHORS COPYING
 %doc %{_docdir}/%{name}/*
 %{_bindir}/%{name}jackhost
-#{_libdir}/%{name}/%{name}.so
+%{_libdir}%{name/}/libcalf.so
+%{_libdir}%{name/}/libcalflv2gui.so
 
 %{_datadir}/%{name}
 
