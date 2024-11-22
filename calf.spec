@@ -107,7 +107,7 @@ desktop-file-install \
      --remove-category="Application" \
      --remove-category="GNOME" \
      --add-category="X-Midi" \
-     --add-category="X-Mageia-CrossDesktop" \
+     --add-category="X-Mandriva-CrossDesktop" \
      --remove-key="Version" \
      --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
@@ -119,8 +119,8 @@ find %{buildroot} -name '*.la' -delete
 %doc README AUTHORS COPYING
 %doc %{_docdir}/%{name}/*
 %{_bindir}/%{name}jackhost
-%{_libdir}%{name/}/libcalf.so
-%{_libdir}%{name/}/libcalflv2gui.so
+%{_libdir}/%{name/}/libcalf.so
+%{_libdir}/%{name/}/libcalflv2gui.so
 
 %{_datadir}/%{name}
 
