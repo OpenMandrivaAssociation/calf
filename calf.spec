@@ -1,7 +1,7 @@
 Name:           calf
 Summary:        Pack of multi-standard audio plugins for LV2 and host for JACK
-Version:        0.90.3
-Release:        5
+Version:        0.90.4
+Release:        1
 License:        GPLv2
 Group:          Sound/Midi
 URL:            https://calf-studio-gear.org/
@@ -83,8 +83,8 @@ extensions.
 
 %build
 # Need to use GCC, because compilation failing with Clang. Bug in upstream: https://github.com/calf-studio-gear/calf/issues/156
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 export NOCONFIGURE=1
 ./autogen.sh
 
