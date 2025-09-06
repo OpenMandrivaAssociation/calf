@@ -1,6 +1,6 @@
 Summary:	Pack of multi-standard audio plugins for LV2 and host for JACK
 Name:	calf
-Version:	0.90.7
+Version:	0.90.8
 Release:	1
 License:	GPLv2
 Group:	Sound
