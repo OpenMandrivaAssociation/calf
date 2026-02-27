@@ -9,6 +9,7 @@ Source0:	https://github.com/calf-studio-gear/%{name}/archive/%{version}/%{name}-
 Patch0: calf-0.90.7-use-ladish-in-place-of-lash.patch
 BuildRequires:	cmake >= 3.15
 BuildRequires:	desktop-file-utils
+BuildRequires:	make
 BuildRequires:	ladspa-devel
 BuildRequires:	pkgconfig(bash-completion)
 BuildRequires:	pkgconfig(cairo)
